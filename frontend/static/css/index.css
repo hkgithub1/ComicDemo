@@ -1,0 +1,16 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: slategray;
+}
+
+#main {
+  margin: 0;
+  padding: 0;
+}
+
+#components {
+  margin: 0;
+  padding: 0;
+}
