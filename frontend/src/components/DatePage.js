@@ -3,7 +3,15 @@ import Header from "../elements/Header";
 import Footer from "../elements/Footer";
 import DateImageTable from "../elements/DateImageTable";
 import CasinoOutlinedIcon from "@mui/icons-material/CasinoOutlined";
-import { Grid, Stack, Box, Typography, TextField, Button } from "@mui/material";
+import {
+  Grid,
+  Stack,
+  Box,
+  Typography,
+  TextField,
+  Button,
+  CircularProgress,
+} from "@mui/material";
 import MD5 from "crypto-js/md5";
 
 const PUBLIC_KEY = "981a980d4cd03f67306c25136c7946c2";
@@ -28,11 +36,15 @@ export default function DatePage() {
   //   }
   // }, [randomYear]);
 
+  //Loading tag.
+  const [loading, setLoading] = useState(false);
+
   //Marvel API variables and handlers.
   const [year, setYear] = useState(1961);
   const [results, setResults] = useState([]);
 
   const getMarvelData = () => {
+    setLoading(true);
     const timeStamp = Date.now().toString();
     const hash = MD5(timeStamp + PRIVATE_KEY + PUBLIC_KEY).toString();
     const current_month = new Date().getMonth() + 1;
@@ -44,12 +56,14 @@ export default function DatePage() {
       .then((response) => response.json())
       .then((data) => {
         setResults(data.data.results);
+        setLoading(false);
       });
 
     console.log(results);
   };
 
   const randomButtonPressed = () => {
+    setLoading(true);
     const currentYear = new Date().getFullYear();
     const min = Math.ceil(1961);
     const max = Math.floor(currentYear);
@@ -67,6 +81,7 @@ export default function DatePage() {
       .then((response) => response.json())
       .then((data) => {
         setResults(data.data.results);
+        setLoading(false);
       });
 
     console.log(results);
@@ -145,8 +160,17 @@ export default function DatePage() {
           </Stack>
         </Grid>
         <Grid item xs={12} sx={{ bgcolor: "background.main", minHeight: 550 }}>
-          <Box sx={{ px: 2, py: 1 }}>
-            <DateImageTable results={results} />
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            sx={{ px: 2, py: 1, height: "100%" }}
+          >
+            {loading ? (
+              <CircularProgress color="secondary" />
+            ) : (
+              <DateImageTable results={results} />
+            )}
           </Box>
         </Grid>
         <Grid
