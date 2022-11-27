@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CartItemsTable from "./CartItemsTable.js";
-import { Drawer, Stack, Button, Divider } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import { Box, Drawer, Stack, Button, Divider, IconButton } from "@mui/material";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
 
@@ -28,13 +29,17 @@ export default function ShoppingCart(props) {
         },
       }}
     >
-      <Stack spacing={2} padding={3} bgcolor="background.main">
+      <Stack spacing={2} padding={2} bgcolor="background.main">
+        <Box display="flex" justifyContent="end">
+          <IconButton onClick={() => props.handleCartClose()}>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </Box>
         <CartItemsTable
           background="secondary.main"
           cartItems={cartItems}
           removeFromCart={removeFromCart}
           handleCartClose={props.handleCartClose}
-          closeButton={true}
         />
 
         <Divider />

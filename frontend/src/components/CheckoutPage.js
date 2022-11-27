@@ -142,7 +142,6 @@ export default function CheckoutPage() {
             <CartItemsTable
               cartItems={cartItems}
               removeFromCart={removeFromCart}
-              closeButton={false}
             />
             <Divider sx={{ bgcolor: "background.secondary" }} />
             <Typography variant="h6">

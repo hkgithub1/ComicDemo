@@ -1,9 +1,6 @@
 import React from "react";
-import CloseIcon from "@mui/icons-material/Close";
 import {
-  Box,
   Button,
-  IconButton,
   Table,
   TableContainer,
   TableHead,
@@ -22,15 +19,7 @@ export default function CartItemsTable(props) {
               <TableCell>Title</TableCell>
               <TableCell>Issues</TableCell>
               <TableCell>Price</TableCell>
-              <TableCell align="right">
-                {props.closeButton ? (
-                  <IconButton onClick={() => props.handleCartClose()}>
-                    <CloseIcon fontSize="small" />
-                  </IconButton>
-                ) : (
-                  <Box />
-                )}
-              </TableCell>
+              <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
