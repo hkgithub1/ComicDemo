@@ -141,7 +141,7 @@ WSGI_APPLICATION = "ComicDemo2.wsgi.application"
 #         'NAME': 'comic_db',
 #         'USER': 'comic_user',
 #         'PASSWORD': 'password',
-#         'HOST': 'db',
+#         'HOST': 'localhost',
 #         'PORT': '5432',
 #     }
 # }
