@@ -11,4 +11,5 @@ urlpatterns = [
     path("signup/", IndexEP),
     path("login/", IndexEP),
     path("account/", IndexEP),
+    path("guess/", IndexEP),
 ]

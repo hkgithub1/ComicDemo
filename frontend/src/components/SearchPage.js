@@ -66,9 +66,9 @@ export default function SearchPage() {
   }, []);
 
   //Price Filter (Price and Range-based) variables and handlers.
-  const [priceFilter, setPriceFilter] = useState(10000);
+  const [priceFilter, setPriceFilter] = useState(1000);
   const [lowPriceRange, setLowPriceRange] = useState(0);
-  const [highPriceRange, setHighPriceRange] = useState(10000);
+  const [highPriceRange, setHighPriceRange] = useState(1000);
 
   useEffect(() => {
     filterByPrice();
@@ -99,7 +99,7 @@ export default function SearchPage() {
     if (filter != priceFilter) {
       setPriceFilter(filter);
     } else {
-      setPriceFilter(10000);
+      setPriceFilter(1000);
     }
   };
 
@@ -277,7 +277,7 @@ export default function SearchPage() {
               <IconButton
                 onClick={() => {
                   setLowPriceRange(0);
-                  setHighPriceRange(10000);
+                  setHighPriceRange(1000);
                 }}
               >
                 <RestartAltOutlinedIcon fontSize="small" color="secondary" />

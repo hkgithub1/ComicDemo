@@ -9,6 +9,7 @@ import DatePage from "./DatePage.js";
 import Login from "./Login.js";
 import Signup from "./Signup.js";
 import AccountPage from "./AccountPage.js";
+import GuessPage from "./GuessPage.js";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 import Inventory from "./Inventory.js";
@@ -29,6 +30,7 @@ function App() {
             <Route path="signup/" element={<Signup />} />
             <Route path="account/" element={<AccountPage />} />
             <Route path="inventory/" element={<Inventory />} />
+            <Route path="guess/" element={<GuessPage />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>
