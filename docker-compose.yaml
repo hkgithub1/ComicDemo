@@ -1,27 +1,23 @@
 version: '3.3'
 services:
-  db:
-    image: postgres:15.1-alpine
-    restart: always
-    environment:
-      - POSTGRES_USER=comic_user
-      - POSTGRES_PASSWORD=password
-    ports:
-      - '5432:5432'
+  # db:
+  #   image: postgres:15.1-alpine
+  #   restart: always
+  #   environment:
+  #     - POSTGRES_USER=comic_user
+  #     - POSTGRES_PASSWORD=password
+  #   ports:
+  #     - '5432:5432'
 
   nginx:
     build: ./nginx
     ports:
-      - 8000:80
+      - 80:80
     depends_on:
       - app
 
   app:
     image: comic
     command: gunicorn ComicDemo2.wsgi:application --bind 0.0.0.0:8000
-    environment:
-      - POSTGRES_DB_NAME=comic_user
-      - POSTGRES_USER=comic_user
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_HOST=db
-      - POSTGRES_PORT=5432      
+    env_file:
+      - ./.env   
